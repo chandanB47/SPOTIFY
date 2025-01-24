@@ -84,42 +84,10 @@ In advanced stages, the focus shifts to improving query performance. Some optimi
 
 ### Advanced Level
 1. Find the top 3 most-viewed tracks for each artist using window functions.
-   ```sql
-select * from spotify
-
-WITH
-	RANKING_ARTIST AS (
-		SELECT
-			ARTIST,
-			TRACK,
-			SUM(VIEWS),
-			DENSE_RANK() OVER (
-				PARTITION BY
-					ARTIST
-				ORDER BY
-					SUM(VIEWS) DESC
-			) AS RANK
-		FROM
-			SPOTIFY
-		GROUP BY
-			1,
-			2
-		ORDER BY
-			1,
-			3 DESC
-	)
-SELECT
-	*
-FROM
-	RANKING_ARTIST
-WHERE
-	RANK <= 3
-
-   ```
-3. Write a query to find tracks where the liveness score is above the average.
-4. **Use a `WITH` clause to calculate the difference between the highest and lowest energy values for tracks in each album.** 
-5. Find tracks where the energy-to-liveness ratio is greater than 1.2.
-6. Calculate the cumulative sum of likes for tracks ordered by the number of views, using window functions.
+2. Write a query to find tracks where the liveness score is above the average.
+3. **Use a `WITH` clause to calculate the difference between the highest and lowest energy values for tracks in each album.** 
+4. Find tracks where the energy-to-liveness ratio is greater than 1.2.
+5. Calculate the cumulative sum of likes for tracks ordered by the number of views, using window functions.
 
 
 Here’s an updated section for your **Spotify Advanced SQL Project ** README, focusing on the query optimization task you performed.
